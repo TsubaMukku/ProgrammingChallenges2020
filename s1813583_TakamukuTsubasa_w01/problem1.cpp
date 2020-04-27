@@ -8,45 +8,39 @@
 #include <vector>
 #include <algorithm>
 #include <utility>
+#include <cstdio>
 
 using namespace std;
-
-vector<int> cycleLength(1000000,0);
-
-int getCycleLength(int n){
-    
-    // base case
-    if (n == 1) return 1;
-    
-    // n >= 2
-    
-    if (cycleLength[n] > 0) return cycleLength[n];
-    
-    int length;
-    
-    if (n % 2 == 1){
-        length = 1 + getCycleLength(3*n+1);
-    }
-    else{
-        length = 1 + getCycleLength(n/2);
-    }
-    
-    return cycleLength[n] = length;
-}
 
 int main(void){
     
     int x, y;
     
-    while (cin >> x >> y){
+    while (scanf("%d%d",&x, &y) == 2){
         cout << x << " " << y << " ";
         
-        if (x > y) swap(x,y);
+        int start = min(x,y); // be careful! ex: x = 300, y = 2;
+        int end = max(x,y);
         
-        int ans = 0;
+        long long ans = 0;
         
-        for (int i = x; i <= y; i++) ans = max(ans, getCycleLength(i));
-        
+        // iterate all numbers between start and end
+        for (long long i = start; i <= end; i++){
+            
+            // ex 16 -> 8 -> 4 -> 2 -> 1;
+            // count must start from 1;
+            long long count = 1;
+            long long temp = i;
+            
+            while (temp != 1){
+                if (temp% 2 == 1) temp = 3 * temp + 1;
+                else temp /= 2;
+                count++;
+            }
+            
+            ans = max(ans, count);
+            
+        }
         cout << ans << endl;
     }
     
