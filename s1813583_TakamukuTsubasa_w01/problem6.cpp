@@ -27,6 +27,9 @@ int main(){
             }
             
             for (int j = 1; j <= 52; j++) current[j] = j;
+                
+            string buf;
+            getline(cin,buf);
 
             while (1){
                 std::string s;
