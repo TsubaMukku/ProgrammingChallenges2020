@@ -51,7 +51,7 @@ int main(){
 
         }
         double money = ans / 100.0;
-        printf("%.2lf",money); // f cents with one leading zero if necessary
+        printf("%.2lf",money); // cents with one leading zero if necessary
         cout << '$' << endl;
     }
 
