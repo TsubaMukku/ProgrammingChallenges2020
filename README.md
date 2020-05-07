@@ -1,2 +1,2 @@
 # ProgrammingChallenges2020
-source codes for Programming Challenges (Prof. Claus Aranha)
+my AC submission codes for Programming Challenges2020 (Prof. Claus Aranha)
